@@ -1,3 +1,3 @@
-# gaohuachenpku.github.io
+# gaohchen.github.io
 
 > Thanks for the [template](https://github.com/jonbarron/website)
