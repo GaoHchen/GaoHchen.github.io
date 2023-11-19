@@ -1,3 +1,5 @@
-# gaohchen.github.io
+# Code of my homepage
 
-> Thanks for the [template](https://github.com/jonbarron/website)
+Hi! Pleases visit [GaoHchen.github.io](GaoHchen.github.io).
+
+> Thanks for [template](https://github.com/jonbarron/website)
