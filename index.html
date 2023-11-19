@@ -10,7 +10,22 @@
 
     gtag('config', 'UA-7580334-2');
   </script> -->
+  <style>
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
 
+    .image-container img {
+        width: 100%;
+        max-width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .image-container:hover img {
+        transform: scale(1.5);
+    }
+</style>
 
   <title> Huachen Gao, Peking University </title>
   
@@ -28,28 +43,30 @@
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle">
               <p style="font: 30px/1 Tahoma,Helvetica,Arial,\5b8b\4f53,sans-serif;text-align:center">Huachen Gao 高华辰</p>
               <!-- <p style="text-align:center">
                 <name>Baichuan Huang</name>
               </p> -->
-              <p>
-                I am a first-year Master student in <a href="https://idm.pku.edu.cn">National Engineering Laboratory for Video Technology</a>, <a href="https://www.pku.edu.cn">Peking University</a>, under the supervision of <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Prof. Ronggang Wang</a>. Before that, I received my B.Eng degree of Computer Science and Technology from <a href="https://www.sdu.edu.cn">Shandong University</a> as an outstanding student in 2022. My research interests include 3D reconstruction, neural radiance fields, and multi-view stereo.
-              </p>
+              
+                I am a second-year Master student in <a href="https://idm.pku.edu.cn">National Engineering Laboratory for Video Technology</a>, <a href="https://www.pku.edu.cn">Peking University</a>, under the supervision of <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Prof. Ronggang Wang</a>. Before that, I received my B.Eng degree of Computer Science and Technology from <a href="https://www.sdu.edu.cn">Shandong University</a> as an outstanding student in 2022. My research interests include neural radiance fields, multi-view stereo, and 3D contents generation.
+              
 
               <p style="text-align:center">
                 <a href="mailto:gaohc@stu.pku.edu.cn">Email</a> &nbsp/&nbsp
                 <!-- <a href="data/CVH.pdf">CV</a> &nbsp/&nbsp -->
-                <a href="https://github.com/GaoHchen">Github</a> &nbsp/&nbsp
+                <!-- <a href="https://github.com/GaoHchen">Github</a> &nbsp/&nbsp -->
                 <a href="https://scholar.google.com.hk/citations?user=x8zi_cEAAAAJ&hl=zh-CN">Google Scholar</a> &nbsp/&nbsp
-                <a href="https://www.linkedin.cn/incareer/in/华辰-高-37baa7215"> LinkedIn </a> &nbsp/&nbsp
-                <a href="images/wexin.JPG">WeChat</a> &nbsp/&nbsp
+                <!-- <a href="https://www.linkedin.cn/incareer/in/华辰-高-37baa7215"> LinkedIn </a> &nbsp/&nbsp -->
+                <!-- <a href="images/wexin.JPG">WeChat</a> &nbsp/&nbsp -->
                 <a href="https://blog.csdn.net/weixin_43537073?spm=1000.2115.3001.5343">Blog</a>
               </p>
             </td>
             
             <td style="padding:2.5%;width:70%;max-width:70%">
-              <a href="images/mylife.JPG"><img style="width:73%;max-width:73%;position:relative;top:30px" alt="profile photo" src="images/mylife.JPG" class="hoverZoomLink"></a>
+              <div class="image-container">
+              <a href="images/mylife.JPG"><img style="width:70%;max-width:70%;position:relative;top:25px;left:20px" alt="profile photo" src="images/mylife.JPG" class="hoverZoomLink"></a>
+            </div>
             </td>
           </tr>
         </tbody></table>
@@ -71,9 +88,12 @@
           <!-- ICASSP -->
           <tr>
             <td style="padding:2.5%;width:25%;vertical-align:middle">
+              <div class="image-container">
               <img style="width:100%;max-width:100%" src="images/icassp.png" alt="N2MVSNet" class="hoverZoomLink">
+            </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://ieeexplore.ieee.org/abstract/document/10095299">
                 <papertitle>N2MVSNet: Non-Local Neighbors Aware Multi-View Stereo Network</papertitle>
               </a>
               <br>
@@ -81,15 +101,18 @@
               <br>
               Accepted by <em><a href="https://2023.ieeeicassp.org">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</a></em>, 2023
               <br>
-            <a href="https://ieeexplore.ieee.org/abstract/document/10095299">paper</a>
+            <!-- <a href="https://ieeexplore.ieee.org/abstract/document/10095299">paper</a> -->
             </td>
         </tr>
         <!-- IJCNN -->
         <tr>
           <td style="padding:2.5%;width:25%;vertical-align:middle">
+            <div class="image-container">
             <img style="width:100%;max-width:100%" src="images/ijcnn.png" alt="Bi-ClueMVSNet" class="hoverZoomLink">
+          </div>
           </td>
           <td style="padding:20px;width:75%;vertical-align:middle">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10191325">
               <papertitle>Bi-ClueMVSNet: Learning Bidirectional Occlusion Clues for Multi-View Stereo</papertitle>
             </a>
             <br>
@@ -97,25 +120,30 @@
             <br>
             Accepted by <em><a href="https://2023.ijcnn.org">IEEE International Joint Conference on Neural Networks (IJCNN)</a></em>, 2023
             <br>
-            <a href="https://ieeexplore.ieee.org/abstract/document/10191325">paper</a>
+            <!-- <a href="https://ieeexplore.ieee.org/abstract/document/10191325">paper</a> -->
           </td>
       </tr>
 
           <!-- applied science -->
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle">
-              <img style="width:100%;max-width:100%" src="images/applsci.png" alt="Unsup_Depth_est" class="hoverZoomLink">
+            <td style="padding:2.5%;width:25%;vertical-align:middle">               
+               <div class="image-container">
+                <img style="width:100%;max-width:100%" src="images/applsci.png" alt="Unsup_Depth_est" class="hoverZoomLink">
+          </div>
+              <!-- <img style="width:100%;max-width:100%" src="images/applsci.png" alt="Unsup_Depth_est" class="hoverZoomLink"> -->
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://www.mdpi.com/2076-3417/11/12/5383">
                 <papertitle>PDANet: Self-Supervised Monocular Depth Estimation Using Perceptual and Data Augmentation Consistency</papertitle>
               </a>
               <br>
-              <strong>Huachen Gao</strong>, Xiaoyu Liu, Meixia Qu*, Shijie Huang
+              <strong>Huachen Gao&dagger;</strong>, Xiaoyu Liu&dagger;, Meixia Qu*, Shijie Huang
               <br>
               Accepted by <em><a href="https://www.mdpi.com/journal/applsci">Applied Sciences</a></em>, 2021, SCI, IF=2.838
               <br>
-              <a href="data/applsci-11-05383.pdf">paper</a>
+              (&dagger; indicates equal contribution)
+              <br>
+              <!-- <a href="data/applsci-11-05383.pdf">paper</a> -->
             </td>
 
         </tr>
@@ -216,18 +244,13 @@
               
               <td style="padding:2.5%;width:20%;vertical-align:top">
                 <p align="center">
-                <a href="images/pku_logo_red.png"><img style="width:20%;max-width:20%" align="center" alt="lundloge" src="images/pku_logo_red.png" class="hoverZoomLink"></a>
+                <a href="https://www.pku.edu.cn"><img style="width:29%;max-width:29%" align="center" alt="pkulogo" src="images/pku_logo_red.png" class="hoverZoomLink"></a>
                 </p>
                 <p align="center">
                 <br>
                 <a href="https://www.pku.edu.cn">Peking University</a>
                 <br>
-                (QS World ranking 12 in 2022
-                <br>
-                Project 985)
-                <br>
-                <br>
-                M.S. in Computer Applied Technology
+                M.S. in Computer Science
                 <br>
                 Sept. 2022 ~ Now
                 </p>
@@ -238,18 +261,13 @@
               
               <td style="padding:2.5%;width:20%;vertical-align:top">
               <p align="center">
-              <a href="images/sdu.png"><img style="width:20%;max-width:20%" align="center" alt="whuloge" src="images/sdu.png" class="hoverZoomLink"></a>
+              <a href="http://www.sdu.edu.cn"><img style="width:29%;max-width:29%" align="center" alt="sdulogo" src="images/sdu.png" class="hoverZoomLink"></a>
               </p>
               <p align="center">
               <br>
               <a href="http://www.sdu.edu.cn">Shandong University</a>
               <br>
-              (Top 20 in China
-              <br>
-              Project 985)
-              <br>
-              <br>
-              B.Eng. in Computer Science and Technology(with honours)
+              B.Eng. in Computer Science
               <br>
               Sep. 2018 ~ Jun. 2022
               <br>
@@ -257,23 +275,27 @@
               </td>
             
 
-              <!-- <td style="padding:2.5%;width:20%;vertical-align:top">
+              <td style="padding:2.5%;width:20%;vertical-align:top">
                 <p align="center">
-                <a href="images/Tencent.png"><img style="width:60%;max-width:60%" align="center" alt="Tencentloge" src="images/Tencent.png" class="hoverZoomLink"></a>
+                <a href="https://www.tencent.com/"><img style="width:55%;max-width:55%" align="center" alt="Tencentlogo" src="images/tencent_logo.png" class="hoverZoomLink"></a>
+                </p>
+                <p align="center">
+                <a href="https://hunyuan.tencent.com"><img style="width:55%;max-width:55%" align="center" alt="hunyuan" src="images/hunyuan.png" class="hoverZoomLink"></a>
                 </p>
                 <p align="center">
                 <br>
-                <a href="https://www.tencent.com/en-us">Tencent</a>
+                <a href="https://www.tencent.com/">Tencent</a> | <a href="https://hunyuan.tencent.com">Hunyuan LLM</a>
+                <!-- change a line -->
                 <br>
-                Research Intern
+                3D AIGC, Research Intern 
                 <br>
-                Aug. 2020 ~ Nov. 2020
+                Aug. 2023 ~ Now 
                 </p>
                 </td>
 
             
 
-            <td style="padding:2.5%;width:20%;vertical-align:top">
+            <!-- <td style="padding:2.5%;width:20%;vertical-align:top">
               <p align="center">
               <a href="images/MEGVII.png"><img style="width:60%;max-width:60%" alt="MEGVIIlogo" src="images/MEGVII.png" class="hoverZoomLink"></a>
               </p>
@@ -290,11 +312,11 @@
               Dec. 2019 ~ May. 2020
               <br>
               </p>
-              </td>
+              </td> -->
 
 
             
-
+<!-- 
             <td style="padding:2.5%;width:20%;vertical-align:top">
                     <p align="center">
               <a href="images/NTU.png"><img style="width:60%;max-width:60%" alt="NTUlogo" src="images/NTU.png" class="hoverZoomLink"></a>
@@ -423,7 +445,7 @@
               <br>
               <strong>Skills: </strong> <br>
               English Level: CET-4 640 | CET-6 570 <br>
-              Programming Languages: Python, C/C++, Java, LaTex
+              Skills: Python, C/C++, Java, Blender
               <br>
               </p>
             </td>
@@ -432,7 +454,7 @@
 
         <table style="width:20%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
-              <td style="padding:0px;width=10%">
+              <td style="padding:0px;width:10%">
                 <br>
                 <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=PwjjvLebRlp69fj1vBhyESyC_30LOpGhRYXgzWfYAx4"></script>
               </td>
@@ -444,7 +466,7 @@
               <td style="padding:0px">
                 <br>
                 <p style="text-align:right;font-size:small;">
-                  Last update: March 2023. / <a href="https://github.com/jonbarron/jonbarron_website">Thanks for the template</a>.
+                  Last update: Nov. 2023. / <a href="https://github.com/jonbarron/jonbarron_website">Copied from this template</a>.
                 </p>
               </td>
             </tr>
