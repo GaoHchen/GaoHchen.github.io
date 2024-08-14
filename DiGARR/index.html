@@ -56,16 +56,16 @@
             <div class="row justify-content-center">
               <div class="column">
                   <p class="mb-5"><a class="btn btn-large btn-light" href="#" role="button"  target="_blank">
-                    <i class="fa fa-file"></i> Paper</a> </p>
+                    <i class="fa fa-file"></i> Paper (Coming Soon)</a> </p>
               </div>
               <div class="column">
                   <p class="mb-5"><a class="btn btn-large btn-light" id="code_soon" href="https://github.com/GaoHchen/DiGARR" role="button" 
                     target="_blank" disabled=1>
-                <i class="fa fa-github-alt"></i> Code </a> </p>
+                <i class="fa fa-github-alt"></i> Code (Coming Soon)</a> </p>
               </div>
               <div class="column">
                   <p class="mb-5"><a class="btn btn-large btn-light" href="#" role="button"  target="_blank">
-                    <i class="fa fa-file"></i> Supplementary</a> </p>
+                    <i class="fa fa-file"></i> Supplementary (Coming Soon)</a> </p>
               </div>
             </div>
             
@@ -87,7 +87,7 @@
             <!-- <video width="70%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" id="header_vid">
                   <source src="videos/web-scene2.m4v" type="video/mp4">
             </video> -->
-            <img class="img-fluid" src="images/teaser.png" alt="Teaser">
+            <img class="img-fluid" src="images/teaser.jpg" alt="Teaser">
             <div><b style="color:#fd5638; font-size:large" id="demo-warning"></b>
             <br>
             </div>
@@ -101,26 +101,67 @@
   </section>
   <br>
 
-  <!-- reconstruction showcase
   <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <h3>Reconstruction showcase</h3>
+          <h3>Method</h3>
             <hr style="margin-top:0px">
-            <div class="embed-responsive embed-responsive-16by9">
+            <!-- <h6 style="color:#8899a5"> NeuralRecon reconstructs 3D scene geometry from a monocular video with known camera poses in <b style="color:#e94a00">real-time</b>🔥.</h6> -->
+<!--             <video poster="images/header-vid-poster.png" width="70%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" id="header_vid"> -->
+            <!-- <video width="70%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" id="header_vid">
+                  <source src="videos/web-scene2.m4v" type="video/mp4">
+            </video> -->
 
-                <iframe style="clip-path: inset(1px 1px)" width="100%" height="100%" src="https://sketchfab.com/playlists/embed?autostart=1&autospin=0.25&amp;collection=bd885db8684e4876976bd6616eda7ade" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-            </div>
+            <img class="img-fluid" src="images/pipeline.jpg" alt="pipeilne">
+            <div><b style="color:#fd5638; font-size:large" id="demo-warning"></b>
+              <p class="text-justify">
+                Our method can be divided into two stages. In the first stage, we input random triplane noise to the proposed triplane generator to generate different feature grids for scene representation while optimizing the camera poses. Features interpolated from different planes are aggregated through the proposed DPA. Colors and densities are derived from an MLP decoder. In the second stage, we discard the generator and transform it to direct updates on triplane feature grids. We adopt a warm-start training strategy for both efficient training and better scene representation.
+            </p>
             <br>
-            <p> Zoom in by scrolling. You can toggle the “Single Sided” option in Model Inspector (pressing I key) to enable back-face culling (see through walls). Select “Matcap” to inspect the geometry without textures.</p>
+            </div>
+              <!-- <br><br> -->
+          
         </div>
       </div>
     </div>
   </section>
-  <br> -->
+  <br>
 
+  <!-- reconstruction showcase -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h3>Novel View Synthesis on LLFF Dataset</h3>
+            <hr style="margin-top:0px">
+              <img class="img-fluid" src="images/res_llff.jpg" alt="LLFF">
+              <div text-align="center"><b style="color:#fd5638; font-size:large" id="demo-warning"></b>
+                <br>
+            <p class="text-center">Naive represents the reference K-Planes trained with unknown camera poses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
 
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h3>Novel View Synthesis on NeRF-Synthetic Dataset</h3>
+            <hr style="margin-top:0px">
+              <img class="img-fluid" src="images/res_blender.jpg" alt="blender">
+              <div text-align="center"><b style="color:#fd5638; font-size:large" id="demo-warning"></b>
+                <br>
+            <p class="text-center">Naive represents reference baseline K-Planes is trained with noisy camera poses.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <br>
   <!-- real-time incremental reconstruction
   <section>
     <div class="container">
@@ -317,22 +358,23 @@
   </div> -->
 
   <!-- citing -->
-  <!-- <div class="container">
+  <div class="container">
     <div class="row ">
       <div class="col-12">
           <h3>Citation</h3>
           <hr style="margin-top:0px">
               <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
-<code>@article{sun2021neucon,
-  title={{NeuralRecon}: Real-Time Coherent {3D} Reconstruction from Monocular Video},
-  author={Sun, Jiaming and Xie, Yiming and Chen, Linghao and Zhou, Xiaowei and Bao, Hujun},
-  journal={CVPR},
-  year={2021}
-}</code></pre>
+<code>@inproceedings{DiGARR,
+  author = {Shen, Shihe and Gao, Huachen and Xu, Wangze and Peng, Rui and Tang, Luyang and Xiong, Kaiqiang and Jiao, Jianbo and Wang, Ronggang},
+  title = {Disentangled Generation and Aggregation for Robust Radiance Fields},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year = {2024}
+} 
+</code></pre>
           <hr>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- ack
   <div class="container">
