@@ -64,14 +64,17 @@
 }
 
 a {
-  color: #1772d0;
+  /* color: #1772d0;
+   */
+  color:rgb(7, 125, 165);
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: #f09228;
-  text-decoration: none;
+  /* color: #f09228; */
+  color:rgb(0, 86, 200);
+  text-decoration: underline;
 }
 
 body,
@@ -80,9 +83,12 @@ th,
 tr,
 p,
 a {
+  /* color:rgb(7, 125, 165); */
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px
 }
+
+
 
 strong {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
@@ -129,3 +135,31 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+/* a:link {
+
+  color:rgb(7, 125, 165);
+  text-decoration:none;
+
+  } */
+
+  /* a:visited {
+  color:#00FF00;
+  text-decoration:none;
+  } */
+/* 
+  a:hover {
+
+  color:#000000;
+
+  text-decoration:none;
+
+  } */
+/* 
+   a:active {
+
+  color:#FFFFFF;
+
+  text-decoration:none; 
+
+  } */
