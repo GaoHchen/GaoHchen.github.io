@@ -68,6 +68,7 @@ a {
    */
   color:rgb(7, 125, 165);
   text-decoration: none;
+  font-size: 26px
 }
 
 a:focus,
@@ -85,24 +86,24 @@ p,
 a {
   /* color:rgb(7, 125, 165); */
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px
+  font-size: 15px
 }
 
 
 
 strong {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 heading {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 22px;
+  font-size: 26px;
 }
 
 papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700
 }
 
