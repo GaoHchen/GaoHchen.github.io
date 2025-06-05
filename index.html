@@ -1,10 +1,90 @@
 <!DOCTYPE HTML>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
-    /* .image-container {
-        position: relative;
-        display: inline-block;
-    } */
+    /* 引入 MapleMono 字体系列 */
+    @font-face {
+      font-family: 'MapleMono';
+      src: url('fonts/MapleMono-NF-CN-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'MapleMono';
+      src: url('fonts/MapleMono-NF-CN-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'MapleMono';
+      src: url('fonts/MapleMono-NF-CN-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'MapleMono';
+      src: url('fonts/MapleMono-NF-CN-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+    }
+    
+    /* 全局字体设置 */
+    * {
+      font-family: 'MapleMono', 'SF Pro Text', 'Helvetica Neue', Arial, 'PingFang SC','Microsoft YaHei', '微软雅黑', sans-serif;
+    }
+    
+    body {
+      font-family: 'MapleMono', 'SF Pro Text', 'Helvetica Neue', Arial, 'PingFang SC','Microsoft YaHei', '微软雅黑', sans-serif;
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 0;
+      padding: 15px;
+      letter-spacing: -0.3px;
+    }
+    
+    /* 标题字体 */
+    heading, h1, h2, h3, h4, h5, h6 {
+      font-family: 'MapleMono', 'SF Pro Display', 'Helvetica Neue', Arial, 'PingFang SC','Microsoft YaHei', '微软雅黑', sans-serif;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+    
+    /* 论文标题 */
+    papertitle {
+      font-family: 'MapleMono', 'SF Pro Display', 'Helvetica Neue', Arial, 'PingFang SC','Microsoft YaHei', '微软雅黑', sans-serif;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      word-spacing: -2px;
+    }
+    
+    /* 强调文本 */
+    strong {
+      font-weight: 600;
+      letter-spacing: -0.1px;
+    }
+    
+    /* 链接文本 */
+    a {
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      letter-spacing: -0.1px;
+      word-spacing: -2px;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* 主标题特殊处理 */
+    .main-title {
+      font-family: 'MapleMono', 'SF Pro Display', 'Helvetica Neue', Arial, 'PingFang SC','Microsoft YaHei', '微软雅黑', sans-serif;
+      font-weight: 600;
+    }
 
     .image-container img {
         transition: transform 0.3s ease;
@@ -12,6 +92,152 @@
 
     .image-container:hover img {
         transform: scale(1.5);
+    }
+    
+    .highlight-tooltip {
+      position: relative;
+      cursor: pointer;
+      color: rgb(226,131,82);
+      font-size: 16px;
+    }
+    
+    .tooltip-text {
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0,0,0,0.9);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    
+    .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(0,0,0,0.9) transparent transparent transparent;
+    }
+    
+    .highlight-tooltip:hover .tooltip-text {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* 五角星旋转动画 */
+    .fa-star {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+    
+    .fa-star:hover {
+      transform: rotate(360deg);
+    }
+
+    /* 紧凑布局样式 */
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-spacing {
+      margin-bottom: 30px;
+    }
+
+    .compact-table {
+      margin-bottom: 20px;
+    }
+
+    .compact-td {
+      padding: 15px 18px;
+    }
+
+    .paper-row {
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 25px;
+    }
+
+    .no-bottom-margin {
+      margin-bottom: 0;
+    }
+
+    /* 论文标题颜色 */
+    papertitle a {
+      color: #2c3e50;
+    }
+
+    papertitle a:hover {
+      color: rgb(7, 125, 165);
+    }
+
+    /* 主要区块阴影 */
+    .main-section {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      margin-bottom: 25px;
+      padding: 20px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .main-section:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 论文项目阴影 */
+    .paper-row {
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.3s ease;
+      background: #fefefe;
+    }
+
+    .paper-row:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 教育和工作经历项目阴影 */
+    .experience-item {
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      margin-bottom: 20px;
+      background: #fefefe;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .experience-item:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 个人信息区块特殊阴影 */
+    .profile-section {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    /* 标题区块阴影 */
+    .section-header {
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 15px 20px;
+      margin-bottom: 20px;
     }
 </style>
 
@@ -26,463 +252,414 @@
 
 </head>
 
-
 <body>
-  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:65%;vertical-align:middle">
-              <p style="font: 30px/1 Helvetica,Arial,\5b8b\4f53,sans-serif;text-align:center">
-                Huachen Gao <span style="font-family: 'Maple';text-align: left;">高华辰</span>
-                <br>
-                <a href="mailto:gaohuachen712@gmail.com" style="color:grey;">
-                  <i class="fa-regular fa-envelope"></i> gaohuachen712 at gmail dot com
-                </a>
-              </p>
-
-                <p style="line-height: 1.5;font-size: 16px;text-align:justify">
-                  I am an incoming PhD student at <a href="http://www.inception3d.fun/">Inception3D Lab</a>, 
-                  <a href="https://en.westlake.edu.cn/">Westlake University</a>, advised by 
-                  <a href="https://apchenstu.github.io/">Prof. Anpei Chen</a>. I am also a final-year Master student at 
-                  <a href="https://idm.pku.edu.cn">National Engineering Research Center for Visual Technology</a>, 
-                  <a href="https://www.pku.edu.cn">Peking University</a>, supervised by 
-                  <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Prof. Ronggang Wang</a>. Before that, I received my B.Eng degree of Computer Science from 
-                  <a href="https://www.sdu.edu.cn">Shandong University</a>.
-                </p>
-
-                <p style="line-height: 1.5;">
-                My research interests include spatial intelligence, 3D content generation and representation, neural rendering, and multi-view stereo.
-              </p>  
-              <p style="text-align:center">
-                <!-- <a href="mailto:gaohuachen712@gmail.com">Email</a> &nbsp;/&nbsp; -->
-                <!-- <a href="data/CVH.pdf">CV</a> &nbsp/&nbsp -->
-                <a href="https://scholar.google.com.hk/citations?user=x8zi_cEAAAAJ&hl=en"><i class="fab fa-google"></i> Google Scholar</a> &nbsp;/&nbsp;
-                <a href="https://github.com/GaoHchen"><i class="fab fa-github"></i> Github</a> &nbsp;/&nbsp;
-                <!-- <a href="https://www.linkedin.cn/incareer/in/华辰-高-37baa7215"> LinkedIn </a> &nbsp/&nbsp -->
-                <a href="images/wechat.JPG"><i class="fab fa-weixin"></i> WeChat</a> &nbsp;/&nbsp;
-                <a href="https://blog.csdn.net/weixin_43537073?spm=1000.2115.3001.5343"><i class="fa-solid fa-book"></i></i> Blog</a>
-              </p>
-              <!-- <p style="text-align: left;"> 
-                <strong>I am actively looking for the PhD opportunity stating in 2025 Fall.</strong>
-              </p> -->
-            </td>
-            
-            <td style="padding:2.5%;width:60%;max-width:60%">
-              <img style="width:55%;max-width:60%;position:relative;top:25px;left:20px" alt="profile photo" src="images/mylife.JPG">
-            </td>
-          </tr>
-
-
-        </tbody></table>
-
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
-              <p>
-              Published papers are listed below. (&clubs;Equal contribution, #Corresponding author)
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        
-        <!-- CVPR 2025 -->
+  <div class="main-container">
+    <!-- 个人信息部分 -->
+    <div class="profile-section">
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
         <tr>
-          <td style="padding:2.5%;width:26%;vertical-align:middle">
-            <div class="image-container">
-            <img style="width:100%;max-width:100%" src="images/see3d.jpg" alt="see3d" class="hoverZoomLink">
-          </div>
-          </td>
-          <td style="padding:20px;width:75%;vertical-align:auto">
-            <a href="https://arxiv.org/abs/2412.06699">
-              <papertitle style="text-align: left;"><span style="color:rgb(226,131,82);"><i class="fa-solid fa-star"></i></span> You See it, You Got it: Learning 3D Creation on Pose-Free Videos at Scale </papertitle>
-            </a>
-            <br>
-            Baorui Ma&clubs;, <strong>Huachen Gao&clubs;</strong>, Haoge Deng&clubs;, Zhengxiong Luo, Tiejun Huang, Lulu Tang#, Xinlong Wang#
-            <br>
-            <em><a href="https://cvpr.thecvf.com/Conferences/2025">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</a></em>, 2025, <strong><span style="color:rgb(226,131,82); font-size: 17px;">(Highlight)</strong></span>
-            <br>
-            <a href="https://arxiv.org/abs/2412.06699">[arxiv]</a>&nbsp;<a href="https://vision.baai.ac.cn/see3d/">[project page]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[code]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[dataset]</a>&nbsp;<a href="https://mp.weixin.qq.com/s/tP_YOkL6kAdeoHf-44Ls5Q">[post]</a>
-          </td>
-      </tr>
-
-
-
-        <!-- ACMMM 2024 -->
-        <tr>
-          <td style="padding:2.5%;width:25%;vertical-align:middle">
-            <div class="image-container">
-            <img style="width:100%;max-width:100%" src="images/mm.jpg" alt="Point-to-Gaussian" class="hoverZoomLink">
-          </div>
-          </td>
-          <td style="padding:20px;width:75%;vertical-align:middle">
-            <a href="https://arxiv.org/abs/2408.10935">
-              <papertitle>Large Point-to-Gaussian Model for Image-to-3D Generation</papertitle>
-            </a>
-            <br>
-            Longfei Lu&clubs;, <strong>Huachen Gao&clubs;</strong>, Tao Dai, Yaohua Zha, Zhi Hou, Junta Wu, Shutao Xia#
-            <br>
-            <em><a href="https://2024.acmmm.org/">The 32nd ACM International Conference on Multimedia (ACM MM)</a></em>, 2024
-            <br>
-            <a href="https://arxiv.org/abs/2408.10935">[arxiv]</a>&nbsp;
-          </td>
-      </tr> 
-      
-        <!-- ECCV2024 -->
-        <tr>
-          <td style="padding:2.5%;width:25%;vertical-align:middle">
-            <div class="image-container">
-            <img style="width:100%;max-width:100%" src="images/eccv_digarr.jpg" alt="DiGRR" class="hoverZoomLink">
-          </div>
-          </td>
-          <td style="padding:20px;width:75%;vertical-align:middle">
-            <a href="https://arxiv.org/abs/2409.15715">
-              <papertitle>Disentangled Generation and Aggregation for Robust Radiance Fields </papertitle>
-            </a>
-            <br>
-             <strong>Huachen Gao&clubs;</strong>, Shihe Shen&clubs;, Wangze Xu, Rui Peng, Luyang Tang, Kaiqiang Xiong, Jianbo Jiao, Ronggang Wang#
-            <br>
-            <em><a href="https://eccv2024.ecva.net/">The 18th European Conference on Computer Vision (ECCV)</a></em>, 2024
-            <br>
-            <a href="https://arxiv.org/abs/2409.15715">[arxiv]</a>&nbsp;<a href="https://gaohchen.github.io/DiGARR/">[project page]</a>&nbsp<a href="https://github.com/GaoHchen/DiGARR">[code]</a>&nbsp
-          </td>
-      </tr>
-        <!-- ECCV2024 -->
-            <tr>
-              <td style="padding:2.5%;width:25%;vertical-align:middle">
-                <div class="image-container">
-                <img style="width:100%;max-width:100%" src="images/eccv_gs.jpg" alt="Gaussian Splatting" class="hoverZoomLink">
-              </div>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/abs/2409.14316">
-                  <papertitle>MVPGS: Excavating Multi-view Priors for Gaussian Splatting from Sparse Input Views </papertitle>
-                </a>
-                <br>
-                Wangze Xu, <strong>Huachen Gao</strong>, Shihe Shen, Rui Peng, Jianbo Jiao, Ronggang Wang#
-                <br>
-                <em><a href="https://eccv2024.ecva.net/">The 18th European Conference on Computer Vision (ECCV)</a></em>, 2024
-                <br>
-                <a href="https://arxiv.org/abs/2409.14316">[arxiv]</a>&nbsp;<a href="https://zezeaaa.github.io/projects/MVPGS/">[project page]</a>&nbsp<a href="https://github.com/zezeaaa/MVPGS">[code]</a>&nbsp
-              </td>
-          </tr>
-
-          <!-- ECCV2024 -->
-            <tr>
-              <td style="padding:2.5%;width:25%;vertical-align:middle">
-                <div class="image-container">
-                <img style="width:100%;max-width:100%" src="images/eccv_surf.jpg" alt="SURF" class="hoverZoomLink">
-              </div>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/abs/2409.03634">
-                  <papertitle>Surface-Centric Modeling for High-Fidelity Generalizable Neural Surface Reconstruction</papertitle>
-                </a>
-                <br>
-                Rui Peng, Shihe Shen, Kaiqiang Xiong, <strong>Huachen Gao</strong>, Jianbo Jiao, Xiaodong Gu, Ronggang Wang#
-                <br>
-                <em><a href="https://eccv2024.ecva.net/">The 18th European Conference on Computer Vision (ECCV)</a></em>, 2024
-                <br>
-                <a href="https://arxiv.org/abs/2409.03634">[arxiv]</a>&nbsp;<a href="https://github.com/prstrive/SuRF">[code]</a>&nbsp;
-              </td>
-          </tr>
-        <!-- ICASSP24 -->
-        <tr>
-          <td style="padding:2.5%;width:25%;vertical-align:middle">
-            <div class="image-container">
-            <img style="width:100%;max-width:100%" src="images/icassp24.jpg" alt="FDCNeRF" class="hoverZoomLink">
-          </div>
-          </td>
-          <td style="padding:20px;width:75%;vertical-align:middle">
-            <a href="https://ieeexplore.ieee.org/document/10446550">
-              <papertitle><strong><span style="color:rgb(226,131,82);"><i class="fa-solid fa-star"></i></span></strong> FDC-NeRF: Learning Pose-Free Neural Radiance Fields With Flow-Depth Consistency </papertitle>
-            </a>
-            <br>
-            <strong>Huachen Gao</strong>, Shihe Shen, Zhe Zhang, Kaiqiang Xiong, Rui Peng, Zhirui Gao, Qi Wang, Yugui Xie, Ronggang Wang#
-            <br>
-            <!-- Accepted by <em><a href="https://2024.ieeeicassp.org">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</a></em>, 2023 -->
-            <em><a href="https://2024.ieeeicassp.org">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</a></em>, 2024, <strong><span style="color:rgb(226,131,82);font-size: 17px;">(Oral)</span></strong>
-            <br>
-            <a href="data/icassp24.pdf">[paper]</a>&nbsp;<a href="data/icassp24_pre.pdf">[slide]</a>&nbsp;
-          <!-- <a href="https://ieeexplore.ieee.org/abstract/document/10095299">paper</a> -->
-          </td>
-      </tr>
-          <!-- ICASSP23 -->
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle">
-              <div class="image-container">
-              <img style="width:100%;max-width:100%" src="images/icassp.jpg" alt="N2MVSNet" class="hoverZoomLink">
-            </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://ieeexplore.ieee.org/abstract/document/10095299">
-                <papertitle>N2MVSNet: Non-Local Neighbors Aware Multi-View Stereo Network</papertitle>
-              </a>
-              <br>
-              Zhe Zhang, <strong>Huachen Gao</strong>, Yuxi Hu, Ronggang Wang#
-              <br>
-              <em><a href="https://2023.ieeeicassp.org">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</a></em>, 2023
-              <br>
-              <a href="data/icassp23.pdf">[paper]</a>&nbsp;
-            <!-- <a href="https://ieeexplore.ieee.org/abstract/document/10095299">paper</a> -->
-            </td>
-        </tr>
-        <!-- IJCNN
-        <tr>
-          <td style="padding:2.5%;width:25%;vertical-align:middle">
-            <div class="image-container">
-            <img style="width:100%;max-width:100%" src="images/ijcnn.jpg" alt="Bi-ClueMVSNet" class="hoverZoomLink">
-          </div>
-          </td>
-          <td style="padding:20px;width:75%;vertical-align:middle">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10191325">
-              <papertitle>Bi-ClueMVSNet: Learning Bidirectional Occlusion Clues for Multi-View Stereo</papertitle>
-            </a>
-            <br>
-            Zhe Zhang, Yuxi Hu, <strong>Huachen Gao</strong>, Ronggang Wang#
-            <br>
-            <em><a href="https://2023.ijcnn.org">IEEE International Joint Conference on Neural Networks (IJCNN)</a></em>, 2023
-            <br>
-            <a href="https://ieeexplore.ieee.org/abstract/document/10191325">[paper]</a>&nbsp;
-            <a href="https://ieeexplore.ieee.org/abstract/document/10191325">paper</a>
-          </td>
-      </tr> -->
-
-          <!-- applied science -->
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle">               
-               <div class="image-container">
-                <img style="width:100%;max-width:100%" src="images/applsci.jpg" alt="Unsup_Depth_est" class="hoverZoomLink">
-          </div>
-              <!-- <img style="width:100%;max-width:100%" src="images/applsci.png" alt="Unsup_Depth_est" class="hoverZoomLink"> -->
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://www.mdpi.com/2076-3417/11/12/5383">
-                <papertitle>PDANet: Self-Supervised Monocular Depth Estimation Using Perceptual and Data Augmentation Consistency</papertitle>
-              </a>
-              <br>
-              <strong>Huachen Gao&clubs;</strong>, Xiaoyu Liu&clubs;, Meixia Qu#, Shijie Huang
-              <br>
-              <em><a href="https://www.mdpi.com/journal/applsci">Applied Sciences</a></em>, 2021, SCI, JCR-Q2
-              <br>
-              <a href="data/applsci-11-05383.pdf">[paper]</a>&nbsp;
-              <!-- (&dagger; indicates equal contribution) -->
-              <!-- <br> -->
-              <!-- <a href="data/applsci-11-05383.pdf">paper</a> -->
-            </td>
-
-        </tr>
-
-
-        </tbody></table>
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td>
-                <heading>Education</heading>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-
-
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto"><tbody>
-      <br>  
-          <tr>
-            <td style="padding:2.5%;width:27%;vertical-align:center;text-align:center;">
-              <div class="image-container" style="display:inline-block;">
-                <img style="width:25%;max-width:100%" src="images/pku_logo_red.jpg" alt="PKU" class="hoverZoomLink">
-              </div>
-            </td>
-            <td style="padding:10px;width:50%;vertical-align:center">
-              <a href="https://www.pku.edu.cn">
-                <papertitle style="margin-left: 0; font-size: 16px;">Peking University</papertitle>
-              </a>
-              <br>
-              Master of Science in Computer Science
-              <br>
-              Under the supervision of <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Prof. Ronggang Wang</a>
-              <br>
-              Sept. 2022 ~ July. 2025 (Expected)
-              <br>
-              <!-- <a href="https://ieeexplore.ieee.org/abstract/document/10191325">paper</a> -->
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:2.5%;width:27%;vertical-align:center;text-align:center;">
-              <div class="image-container" style="display:inline-block;">
-                <img style="width:25%;max-width:100%" src="images/sdu.jpg" alt="SDU" class="hoverZoomLink">
-              </div>
-            </td>
-            <td style="padding:10px;width:50%;vertical-align:center">
-              <a href="https://www.sdu.edu.cn">
-                <papertitle style="margin-left: 0; font-size: 16px;">Shandong University</papertitle>
-              </a>
-              <br>
-              Bachelor of Engineering in Computer Science (with honour)
-              <br>
-              Outstanding Graduate of Shandong Province
-              <br>
-              Sept. 2018 ~ July. 2022
-              <br>
-              <!-- <a href="https://ieeexplore.ieee.org/abstract/document/10191325">paper</a> -->
-            </td>
-          </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td>
-                <heading>Experiences</heading>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto"><tbody>
-          <br>
-          <tr>
-            <td style="padding:2.5%;width:27%;vertical-align:center;text-align:center;">
-              <div class="image-container" style="display:inline-block;">
-                <p align="center">
-                  <a href="https://baai.ac.cn/en/"><img style="width:40%;max-width:65%" align="center" alt="baailogo" src="images/baai.svg" class="hoverZoomLink"></a>
-                  </p>
-                </div>
-            </td>
-            <td style="padding:10px;width:50%;vertical-align:center">
-              <a href="https://baai.ac.cn/en/"><papertitle style="margin-left: 0; font-size: 16px;">Beijing Academy of Artificial Intelligence</papertitle></a>
-              <br>
-              Research Intern at <a href="https://github.com/baaivision">BAAI-Vision</a>
-              <br>
-              Research on 3D content generation
-              <br>
-              Advised by <a href="https://mabaorui.github.io/">Dr. Baorui Ma</a> and <a href="https://www.xloong.wang/">Dr. Xinlong Wang</a>
-              <br>
-              Apr. 2024 ~ Apr. 2025
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding:2.5%;width:27%;vertical-align:center;text-align:center;">
-              <div class="image-container" style="display:inline-block;">
-                <p align="center">
-                  <a href="https://www.tencent.com/"><img style="width:50%;max-width:70%" align="center" alt="Tencentlogo" src="images/tencent_logo.jpg" class="hoverZoomLink"></a>
-                  </p>
-                  <p align="center">
-                  <a href="https://hunyuan.tencent.com"><img style="width:40%;max-width:55%" align="center" alt="hunyuan" src="images/hunyuan.jpg" class="hoverZoomLink"></a>
-                  </p>              </div>
-            </td>
-            <td style="padding:10px;width:50%;vertical-align:center">
-              <a href="https://www.tencent.com/"><papertitle style="margin-left: 0; font-size: 16px;">Tencent</papertitle></a>
-              <br>
-              Research Intern at <a href="https://hunyuan.tencent.com">Hunyuan</a>
-              <br>
-              Research and develop <a href="https://3d.hunyuan.tencent.com/">Hunyuan3D-1.0</a>
-              <br>
-              Aug. 2023 ~ Jan. 2024
-              <br>
-            </td>
-          </tr>
-
-
-
-
-
-          </tbody></table>
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Awards</heading>
-            <p>
-            <!-- <strong>2022.06</strong>: Honours Bachelor of Engineering in Shandong University (Top 5% in SDU), issued by Shandong Univ.<br>
-            <strong>2022.04</strong>: Outstanding Graduate of Shandong Province (Top 0.1% in Shandong Porvince), issued by <a href="http://hrss.shandong.gov.cn">Human Resources and Social Security Department of Shandong Province</a><br>
-            <strong>2021.04</strong>: Honorable Mention Award of MCM/ICM (Top 20% Worldwide), issued by <a href="https://www.comap.com/">COMAP</a><br>
-            <strong>2020.11</strong>: National First Prize in China Undergraduate Mathematical Contest in Modelling (Top 0.6% in China), issued by <a href="https://www.csiam.org.cn/english/index/index.html">China Society for Industrial and Applied Mathematics</a><br>
-            <strong>2020.02</strong>: Second prize of 2020 China Engineering Robotics Competition, issued by <a href="https://en.caai.cn">Chinese Association for Artificial Intelligence</a><br> -->
-
-            <strong>2022.06</strong>: Honours Bachelor of Engineering in Shandong University (Top 5% in Shandong University)<br>
-            <strong>2022.04</strong>: Outstanding Graduate of Shandong Province (Top 0.1% in Shandong Porvince)<br>
-            <strong>2021.04</strong>: Honorable Mention Award of MCM/ICM (Top 20% Worldwide)<br>
-            <strong>2020.11</strong>: <span style="color:rgb(226,131,82);"><strong>National First Prize</strong></span> in Undergraduate Mathematical Contest in Modelling (Top 0.6% in China)<br>
-            <strong>2020.02</strong>: National Second prize of 2020 China Engineering Robotics Competition<br>
-
-            
+          <td class="compact-td" style="width:65%;vertical-align:middle">
+            <p class="main-title" style="font-size: 28px;text-align:center;margin-bottom:12px">
+              Huachen Gao <span style="text-align: left;">高华辰</span>
             </p>
+            <p style="text-align:center;margin-bottom:20px">
+              <a href="mailto:gaohuachen712@gmail.com" style="color:grey;font-size:14px">
+                <i class="fa-regular fa-envelope"></i> gaohuachen712 at gmail dot com
+              </a>
+            </p>
+
+            <p style="line-height: 1.5;font-size: 15px;text-align:justify;margin-bottom:12px">
+              I am an incoming Ph.D. student at <a href="http://www.inception3d.fun/">Inception3D Lab</a>, 
+              <a href="https://en.westlake.edu.cn/">Westlake University</a>, advised by Prof. 
+              <a href="https://apchenstu.github.io/">Anpei Chen</a>. I am also a final-year Master student at 
+              <a href="https://idm.pku.edu.cn">National Engineering Research Center for Visual Technology</a>, 
+              <a href="https://www.pku.edu.cn">Peking University</a>, supervised by Prof. 
+              <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Ronggang Wang</a>. Before that, I received my B.Eng degree of Computer Science from 
+              <a href="https://www.sdu.edu.cn">Shandong University</a>.
+            </p>
+
+            <p style="line-height: 1.5;margin-bottom:15px">
+              My research interests include spatial intelligence, 3D content generation and representation, neural rendering, and multi-view stereo.
+            </p>  
+            
+            <p style="text-align:center;margin-bottom:0">
+              <a href="https://scholar.google.com.hk/citations?user=x8zi_cEAAAAJ&hl=en"><i class="fab fa-google"></i> Google Scholar</a> &nbsp;/&nbsp;
+              <a href="https://github.com/GaoHchen"><i class="fab fa-github"></i> Github</a> &nbsp;/&nbsp;
+              <a href="images/wechat.JPG"><i class="fab fa-weixin"></i> WeChat</a> &nbsp;/&nbsp;
+              <a href="https://blog.csdn.net/weixin_43537073?spm=1000.2115.3001.5343"><i class="fa-solid fa-book"></i> Blog</a>
+            </p>
+          </td>
+          
+          <td class="compact-td" style="width:35%;text-align:center;vertical-align:middle">
+            <img style="width:60%;max-width:200px;border-radius:8px" alt="profile photo" src="images/mylife.JPG">
           </td>
         </tr>
       </tbody></table>
-
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
-          <heading>Services</heading>
-          <p>
-          <strong>Reviewer:</strong>
-          <ul>
-            <li>Conference: ACM MM'24/25, CVPR'25, ICASSP'25, IJCNN'25</li>
-            <li>Journal: TCSVT, ISPRS</li>
-          </ul>
+    </div>
+    <div class="main-section">
+    <!-- 研究部分 -->
+    <table class="section-spacing compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+      <tr>
+        <td class="compact-td" style="width:100%;vertical-align:middle">
+          <heading>Research</heading>
+          <p style="margin-bottom:12px">
+            Published papers are listed below. (&clubs;Equal contribution, #Corresponding author)
           </p>
         </td>
       </tr>
     </tbody></table>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Others</heading>
-              <p>
-              <strong>Software Copyrights/Patents: </strong> <br>
-              Augmented reality technology based starnight simulation system (2020SR0837054)
+    <!-- 论文列表 -->
+
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        
+        <!-- CVPR 2025 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/see3d.jpg" alt="see3d">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2412.06699">
+              <papertitle style="color:rgb(7, 125, 165);"><span style="color:rgb(226,131,82);"><i class="fa-solid fa-star"></i></span> You See it, You Got it: Learning 3D Creation on Pose-Free Videos at Scale</papertitle>
+            </a>
+            <br>
+            Baorui Ma&clubs;, <strong>Huachen Gao&clubs;</strong>, Haoge Deng&clubs;, Zhengxiong Luo, Tiejun Huang, Lulu Tang#, Xinlong Wang#
+            <br>
+            <em><a href="https://cvpr.thecvf.com/Conferences/2025">IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</a></em>, 2025, <strong><span class="highlight-tooltip">(Highlight)
+              <span class="tooltip-text">3% Acceptance Rate</span>
+            </span></strong>
+            <br>
+            <a href="https://arxiv.org/abs/2412.06699">[arxiv]</a>&nbsp;<a href="https://vision.baai.ac.cn/see3d/">[project]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[code]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[dataset]</a>&nbsp;<a href="https://mp.weixin.qq.com/s/tP_YOkL6kAdeoHf-44Ls5Q">[post]</a>
+          </td>
+        </tr>
+
+        <!-- ACMMM 2024 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/mm.jpg" alt="Point-to-Gaussian">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2408.10935">
+              <papertitle style="color:rgb(7, 125, 165);">Large Point-to-Gaussian Model for Image-to-3D Generation</papertitle>
+            </a>
+            <br>
+            Longfei Lu&clubs;, <strong>Huachen Gao&clubs;</strong>, Tao Dai, Yaohua Zha, Zhi Hou, Junta Wu, Shutao Xia#
+            <br>
+            <em><a href="https://2024.acmmm.org/">ACM International Conference on Multimedia (ACM MM)</a></em>, 2024
+            <br>
+            <a href="https://arxiv.org/abs/2408.10935">[arxiv]</a>
+          </td>
+        </tr> 
+        
+        <!-- ECCV2024 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/eccv_digarr.jpg" alt="DiGRR">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2409.15715">
+              <papertitle style="color:rgb(7, 125, 165);">Disentangled Generation and Aggregation for Robust Radiance Fields</papertitle>
+            </a>
+            <br>
+            <strong>Huachen Gao&clubs;</strong>, Shihe Shen&clubs;, Wangze Xu, Rui Peng, Luyang Tang, Kaiqiang Xiong, Jianbo Jiao, Ronggang Wang#
+            <br>
+            <em><a href="https://eccv2024.ecva.net/">European Conference on Computer Vision (ECCV)</a></em>, 2024
+            <br>
+            <a href="https://arxiv.org/abs/2409.15715">[arxiv]</a>&nbsp;<a href="https://gaohchen.github.io/DiGARR/">[project]</a>&nbsp;<a href="https://github.com/GaoHchen/DiGARR">[code]</a>
+          </td>
+        </tr>
+
+        <!-- ECCV2024 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/eccv_gs.jpg" alt="Gaussian Splatting">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2409.14316">
+              <papertitle style="color:rgb(7, 125, 165);">MVPGS: Excavating Multi-view Priors for Gaussian Splatting from Sparse Input Views</papertitle>
+            </a>
+            <br>
+            Wangze Xu, <strong>Huachen Gao</strong>, Shihe Shen, Rui Peng, Jianbo Jiao, Ronggang Wang#
+            <br>
+            <em><a href="https://eccv2024.ecva.net/">European Conference on Computer Vision (ECCV)</a></em>, 2024
+            <br>
+            <a href="https://arxiv.org/abs/2409.14316">[arxiv]</a>&nbsp;<a href="https://zezeaaa.github.io/projects/MVPGS/">[project]</a>&nbsp;<a href="https://github.com/zezeaaa/MVPGS">[code]</a>
+          </td>
+        </tr>
+
+        <!-- ECCV2024 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/eccv_surf.jpg" alt="SURF">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2409.03634">
+              <papertitle style="color:rgb(7, 125, 165);">Surface-Centric Modeling for High-Fidelity Generalizable Neural Surface Reconstruction</papertitle>
+            </a>
+            <br>
+            Rui Peng, Shihe Shen, Kaiqiang Xiong, <strong>Huachen Gao</strong>, Jianbo Jiao, Xiaodong Gu, Ronggang Wang#
+            <br>
+            <em><a href="https://eccv2024.ecva.net/">European Conference on Computer Vision (ECCV)</a></em>, 2024
+            <br>
+            <a href="https://arxiv.org/abs/2409.03634">[arxiv]</a>&nbsp;<a href="https://github.com/prstrive/SuRF">[code]</a>
+          </td>
+        </tr>
+
+        <!-- ICASSP24 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/icassp24.jpg" alt="FDCNeRF">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://ieeexplore.ieee.org/document/10446550">
+              <papertitle style="color:rgb(7, 125, 165);"><span style="color:rgb(226,131,82);"><i class="fa-solid fa-star"></i></span> FDC-NeRF: Learning Pose-Free Neural Radiance Fields With Flow-Depth Consistency</papertitle>
+            </a>
+            <br>
+            <strong>Huachen Gao</strong>, Shihe Shen, Zhe Zhang, Kaiqiang Xiong, Rui Peng, Zhirui Gao, Qi Wang, Yugui Xie, Ronggang Wang#
+            <br>
+            <em><a href="https://2024.ieeeicassp.org">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</a></em>, 2024, <strong><span class="highlight-tooltip">(Oral)
+              <span class="tooltip-text">8% Acceptance Rate</span>
+            </span></strong>
+            <br>
+            <a href="data/icassp24.pdf">[paper]</a>&nbsp;<a href="data/icassp24_pre.pdf">[slide]</a>
+          </td>
+        </tr>
+
+        <!-- ICASSP23 -->
+        <tr class="paper-row">
+          <td class="compact-td" style="width:25%;vertical-align:middle">
+            <div class="image-container">
+              <img style="width:100%" src="images/icassp.jpg" alt="N2MVSNet">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10095299">
+              <papertitle style="color:rgb(7, 125, 165);">N2MVSNet: Non-Local Neighbors Aware Multi-View Stereo Network</papertitle>
+            </a>
+            <br>
+            Zhe Zhang, <strong>Huachen Gao</strong>, Yuxi Hu, Ronggang Wang#
+            <br>
+            <em><a href="https://2023.ieeeicassp.org">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</a></em>, 2023
+            <br>
+            <a href="data/icassp23.pdf">[paper]</a>
+          </td>
+        </tr>
+
+        <!-- Applied Sciences -->
+        <tr class="paper-row no-bottom-margin">
+          <td class="compact-td" style="width:25%;vertical-align:middle">               
+            <div class="image-container">
+              <img style="width:100%" src="images/applsci.jpg" alt="Unsup_Depth_est">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:top">
+            <a href="https://www.mdpi.com/2076-3417/11/12/5383">
+              <papertitle style="color:rgb(7, 125, 165);">PDANet: Self-Supervised Monocular Depth Estimation Using Perceptual and Data Augmentation Consistency</papertitle>
+            </a>
+            <br>
+            <strong>Huachen Gao&clubs;</strong>, Xiaoyu Liu&clubs;, Meixia Qu#, Shijie Huang
+            <br>
+            <em><a href="https://www.mdpi.com/journal/applsci">Applied Sciences</a></em>, 2021, SCI, JCR-Q2
+            <br>
+            <a href="data/applsci-11-05383.pdf">[paper]</a>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <!-- 教育经历部分 -->
+    <div class="main-section">
+    <table class="section-spacing compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+      <tr>
+        <td class="compact-td">
+          <heading>Education</heading>
+        </td>
+      </tr>
+    </tbody></table>
+
+
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr class="experience-item">
+          <td class="compact-td" style="width:25%;vertical-align:middle;text-align:center;">
+            <div class="image-container">
+              <img style="width:80px;height:80px;object-fit:contain" src="images/pku_logo_red.jpg" alt="PKU">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:center">
+            <a href="https://www.pku.edu.cn">
+              <papertitle style="font-size: 16px;color:rgb(7, 125, 165);">Peking University</papertitle>
+            </a>
+            <br>
+            Master of Science in Computer Science
+            <br>
+            Under the supervision of <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Prof. Ronggang Wang</a>
+            <br>
+            Sept. 2022 ~ July. 2025 (Expected)
+          </td>
+        </tr>
+
+        <tr class="experience-item">
+          <td class="compact-td" style="width:25%;vertical-align:middle;text-align:center;">
+            <div class="image-container">
+              <img style="width:80px;height:80px;object-fit:contain" src="images/sdu.jpg" alt="SDU">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:center">
+            <a href="https://www.sdu.edu.cn">
+              <papertitle style="font-size: 16px;color:rgb(7, 125, 165);">Shandong University</papertitle>
+            </a>
+            <br>
+            Bachelor of Engineering in Computer Science (with honour)
+            <br>
+            Outstanding Graduate of Shandong Province
+            <br>
+            Sept. 2018 ~ July. 2022
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <!-- 工作经历部分 -->
+    <div class="main-section">
+    <table class="section-spacing compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+      <tr>
+        <td class="compact-td">
+          <heading>Experiences</heading>
+        </td>
+      </tr>
+    </tbody></table>
+
+
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr class="experience-item">
+          <td class="compact-td" style="width:25%;vertical-align:middle;text-align:center;">
+            <div class="image-container">
+              <img style="width:110px;height:auto;object-fit:contain" src="images/baai.svg" alt="BAAI">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:center">
+            <a href="https://baai.ac.cn/en/">
+              <papertitle style="font-size: 16px;color:rgb(7, 125, 165);">Beijing Academy of Artificial Intelligence</papertitle>
+            </a>
+            <br>
+            Research Intern at <a href="https://github.com/baaivision">BAAI-Vision</a>
+            <br>
+            Research on 3D content generation
+            <br>
+            Advised by <a href="https://mabaorui.github.io/">Dr. Baorui Ma</a> and <a href="https://www.xloong.wang/">Dr. Xinlong Wang</a>
+            <br>
+            Apr. 2024 ~ Apr. 2025
+          </td>
+        </tr>
+        
+        <tr class="experience-item">
+          <td class="compact-td" style="width:25%;vertical-align:middle;text-align:center;">
+            <div class="image-container">
+              <img style="width:140px;height:auto;object-fit:contain;margin-bottom:5px" src="images/tencent_logo.jpg" alt="Tencent">
               <br>
-              <br>
-              <strong>Skills: </strong> <br>
-              Language: Chinese, English (CET-4 640 | CET-6 570) <br>
+              <img style="width:110px;height:auto;object-fit:contain" src="images/hunyuan.jpg" alt="Hunyuan">
+            </div>
+          </td>
+          <td class="compact-td" style="width:75%;vertical-align:center">
+            <a href="https://www.tencent.com/">
+              <papertitle style="font-size: 16px;color:rgb(7, 125, 165);">Tencent</papertitle>
+            </a>
+            <br>
+            Research Intern at <a href="https://hunyuan.tencent.com">Hunyuan</a>
+            <br>
+            Research and develop <a href="https://3d.hunyuan.tencent.com/">Hunyuan3D-1.0</a>
+            <br>
+            Aug. 2023 ~ Jan. 2024
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <!-- 奖项部分 -->
+    <div class="main-section">
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr>
+          <td class="compact-td" style="width:100%;vertical-align:middle">
+            <heading>Awards</heading>
+            <p style="margin-bottom:4px;line-height:1.6">
+              <strong>2022.06</strong>: Honors Bachelor of Engineering in Shandong University (Top 5% in Shandong University)<br>
+              <strong>2022.04</strong>: Outstanding Graduate of Shandong Province (Top 0.1% in Shandong Province)<br>
+              <strong>2021.04</strong>: Honorable Mention Award of MCM/ICM (Top 20% Worldwide)<br>
+              <strong>2020.11</strong>: <span style="color:rgb(226,131,82);"><strong>National First Prize</strong></span> in Undergraduate Mathematical Contest in Modelling (Top 0.6% in China)<br>
+              <strong>2020.02</strong>: National Second prize of 2020 China Engineering Robotics Competition
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <!-- 服务部分 -->
+    <div class="main-section">
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr>
+          <td class="compact-td" style="width:100%;vertical-align:middle">
+            <heading>Services</heading>
+            <p style="margin-bottom:4px">
+              <strong>Reviewer:</strong>
+            </p>
+            <ul style="margin:0;padding-left:20px;line-height:1.4">
+              <li>Conference: ACM MM'24/25, CVPR'25, ICASSP'25, IJCNN'25</li>
+              <li>Journal: TCSVT, ISPRS</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <!-- 其他信息部分 -->
+    <div class="main-section">
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr>
+          <td class="compact-td" style="width:100%;vertical-align:middle">
+            <heading>Misc</heading>
+            <p style="margin-bottom:4px;line-height:1.6">
+              <strong>Skills:</strong><br>
+              Language: Chinese, English<br>
               Programming: Python, C/C++, Java, Blender
-              <br>
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
 
-        <table style="width:15%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=PwjjvLebRlp69fj1vBhyESyC_30LOpGhRYXgzWfYAx4"></script>
-              </td>
-            </tr>
-          </tbody></table>
-          
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                  Last update: Dec 2024. / <a href="https://github.com/jonbarron/jonbarron_website">Thanks for the awesome template</a>.
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
+    <!-- 访问统计 -->
+    <table style="width:15%;border:0px;border-spacing:0px;border-collapse:separate;margin:10px auto;"><tbody>
+      <tr>
+        <td style="padding:0px;text-align:center">
+          <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=PwjjvLebRlp69fj1vBhyESyC_30LOpGhRYXgzWfYAx4"></script>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <!-- 页脚 -->
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:10px auto 0;"><tbody>
+      <tr>
+        <td style="padding:0px">
+          <p style="text-align:right;font-size:small;margin:0">
+            Last update: June 2025. / <a href="https://github.com/jonbarron/jonbarron_website">Thanks for the awesome template</a>.
+          </p>
+        </td>
+      </tr>
+    </tbody></table>
 
-      </td>
-    </tr>
-  </table>
-  
+  </div>
 </body>
-
 
 </html>
