@@ -4,30 +4,38 @@
     /* 引入 MapleMono 字体系列 */
     @font-face {
       font-family: 'MapleMono';
-      src: url('fonts/MapleMono-NF-CN-Regular.ttf') format('truetype');
+      src: url('fonts/MapleMono-NF-CN-Regular.woff2') format('woff2'),
+           url('fonts/MapleMono-NF-CN-Regular.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
+      font-display: swap;
     }
     
     @font-face {
       font-family: 'MapleMono';
-      src: url('fonts/MapleMono-NF-CN-Medium.ttf') format('truetype');
+      src: url('fonts/MapleMono-NF-CN-Medium.woff2') format('woff2'),
+           url('fonts/MapleMono-NF-CN-Medium.ttf') format('truetype');
       font-weight: 500;
       font-style: normal;
+      font-display: swap;
     }
     
     @font-face {
       font-family: 'MapleMono';
-      src: url('fonts/MapleMono-NF-CN-SemiBold.ttf') format('truetype');
+      src: url('fonts/MapleMono-NF-CN-SemiBold.woff2') format('woff2'),
+           url('fonts/MapleMono-NF-CN-SemiBold.ttf') format('truetype');
       font-weight: 600;
       font-style: normal;
+      font-display: swap;
     }
     
     @font-face {
       font-family: 'MapleMono';
-      src: url('fonts/MapleMono-NF-CN-Bold.ttf') format('truetype');
+      src: url('fonts/MapleMono-NF-CN-Bold.woff2') format('woff2'),
+           url('fonts/MapleMono-NF-CN-Bold.ttf') format('truetype');
       font-weight: 700;
       font-style: normal;
+      font-display: swap;
     }
     
     /* 全局字体设置 */
@@ -239,11 +247,78 @@
       padding: 15px 20px;
       margin-bottom: 20px;
     }
+
+    /* 响应式布局 - 移动端优化 */
+    @media (max-width: 768px) {
+      body {
+        -webkit-text-size-adjust: 100%; /* 防止 iOS 字体自动放大 */
+      }
+      .main-container {
+        padding: 0 10px;
+      }
+      .main-title { font-size: 24px !important; }
+      .profile-section, .main-section, .section-header { padding: 15px; }
+      heading { font-size: 20px; }
+
+      /* 将表格驱动的双栏布局转换为灵活的单栏堆叠布局 */
+      .profile-section .compact-table > tbody > tr,
+      .paper-row,
+      .experience-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 水平居中 */
+      }
+      
+      .profile-section .compact-table td,
+      .paper-row td,
+      .experience-item td {
+        width: 100% !important;
+        padding: 10px 0 !important;
+      }
+      
+      /* --- 内容重新排序与对齐 --- */
+
+      /* 个人信息: 头像在上 */
+      .profile-section .compact-table td:first-child { order: 2; }
+      .profile-section .compact-table td:last-child { order: 1; }
+      .profile-section p { text-align: justify !important; }
+      .profile-section p[style*="text-align:center"] { text-align: center !important; }
+
+      /* 论文: 图片在上 */
+      .paper-row { align-items: stretch; } /* 允许内容自适应宽度 */
+      .paper-row td:first-child { order: 1; text-align: center !important; }
+      .paper-row td:last-child { order: 2; text-align: left !important; }
+      .paper-row td:last-child, .paper-row td:last-child * { text-align: left !important; }
+
+      /* 经历: Logo在上 */
+      .experience-item td:first-child { order: 1; }
+      .experience-item td:last-child { order: 2; text-align: center !important; }
+      .experience-item td:last-child, .experience-item td:last-child * { text-align: center !important; }
+      .experience-item a[href] { display: inline-block; }
+      
+      /* --- 图片尺寸调整 --- */
+      .profile-section img {
+        width: 160px !important;
+        max-width: 160px !important;
+      }
+      .paper-row img {
+        width: 60% !important;
+        max-width: 220px;
+      }
+
+      /* 在小屏幕上隐藏地球访问统计 */
+      #clstr_globe {
+        display: none;
+      }
+    }
 </style>
 
   <title> Huachen Gao's Homepage </title>
   <meta name="author" content="Huachen Gao (高华辰)">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="preload" href="fonts/MapleMono-NF-CN-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="fonts/MapleMono-NF-CN-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel=icon href=images/cat.jpg type=image/jpg>
@@ -274,7 +349,7 @@
               <a href="https://apchenstu.github.io/">Anpei Chen</a>. I am also a final-year Master student at 
               <a href="https://idm.pku.edu.cn">National Engineering Research Center for Visual Technology</a>, 
               <a href="https://www.pku.edu.cn">Peking University</a>, supervised by Prof. 
-              <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Ronggang Wang</a>. Before that, I received my B.Eng degree of Computer Science from 
+              <a href="https://www.ece.pku.edu.cn/info/1046/2147.htm">Ronggang Wang</a>. I received my B.Eng of Computer Science from 
               <a href="https://www.sdu.edu.cn">Shandong University</a>.
             </p>
 
@@ -298,16 +373,18 @@
     </div>
     <div class="main-section">
     <!-- 研究部分 -->
-    <table class="section-spacing compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
-      <tr>
-        <td class="compact-td" style="width:100%;vertical-align:middle">
-          <heading>Research</heading>
-          <p style="margin-bottom:12px">
-            Published papers are listed below. (&clubs;Equal contribution, #Corresponding author)
-          </p>
-        </td>
-      </tr>
-    </tbody></table>
+    <div class="main-section">
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr>
+          <td class="compact-td" style="width:100%;vertical-align:middle">
+            <heading>Research</heading>
+            <br>
+            <p style="margin-bottom:12px">
+              Published papers are listed below. (<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i>&nbsp;Equal contribution, #&nbsp;Corresponding author)
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
 
     <!-- 论文列表 -->
 
@@ -321,17 +398,17 @@
             </div>
           </td>
           <td class="compact-td" style="width:75%;vertical-align:top">
-            <a href="https://arxiv.org/abs/2412.06699">
+            <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Ma_You_See_it_You_Got_it_Learning_3D_Creation_on_CVPR_2025_paper.pdf">
               <papertitle style="color:rgb(7, 125, 165);"><span style="color:rgb(226,131,82);"><i class="fa-solid fa-star"></i></span> You See it, You Got it: Learning 3D Creation on Pose-Free Videos at Scale</papertitle>
             </a>
             <br>
-            Baorui Ma&clubs;, <strong>Huachen Gao&clubs;</strong>, Haoge Deng&clubs;, Zhengxiong Luo, Tiejun Huang, Lulu Tang#, Xinlong Wang#
+            Baorui Ma<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i>, <strong>Huachen Gao<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i></strong>, Haoge Deng<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i>, Zhengxiong Luo, Tiejun Huang, Lulu Tang#, Xinlong Wang#
             <br>
             <em><a href="https://cvpr.thecvf.com/Conferences/2025">IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</a></em>, 2025, <strong><span class="highlight-tooltip">(Highlight)
               <span class="tooltip-text">3% Acceptance Rate</span>
             </span></strong>
             <br>
-            <a href="https://arxiv.org/abs/2412.06699">[arxiv]</a>&nbsp;<a href="https://vision.baai.ac.cn/see3d/">[project]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[code]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[dataset]</a>&nbsp;<a href="https://mp.weixin.qq.com/s/tP_YOkL6kAdeoHf-44Ls5Q">[post]</a>
+            <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Ma_You_See_it_You_Got_it_Learning_3D_Creation_on_CVPR_2025_paper.pdf">[paper]</a>&nbsp;<a href="https://vision.baai.ac.cn/see3d/">[project]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[code]</a>&nbsp;<a href="https://github.com/baaivision/See3D">[dataset]</a>&nbsp;<a href="https://mp.weixin.qq.com/s/tP_YOkL6kAdeoHf-44Ls5Q">[post]</a>
           </td>
         </tr>
 
@@ -347,7 +424,7 @@
               <papertitle style="color:rgb(7, 125, 165);">Large Point-to-Gaussian Model for Image-to-3D Generation</papertitle>
             </a>
             <br>
-            Longfei Lu&clubs;, <strong>Huachen Gao&clubs;</strong>, Tao Dai, Yaohua Zha, Zhi Hou, Junta Wu, Shutao Xia#
+            Longfei Lu<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i>, <strong>Huachen Gao<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i></strong>, Tao Dai, Yaohua Zha, Zhi Hou, Junta Wu, Shutao Xia#
             <br>
             <em><a href="https://2024.acmmm.org/">ACM International Conference on Multimedia (ACM MM)</a></em>, 2024
             <br>
@@ -367,7 +444,7 @@
               <papertitle style="color:rgb(7, 125, 165);">Disentangled Generation and Aggregation for Robust Radiance Fields</papertitle>
             </a>
             <br>
-            <strong>Huachen Gao&clubs;</strong>, Shihe Shen&clubs;, Wangze Xu, Rui Peng, Luyang Tang, Kaiqiang Xiong, Jianbo Jiao, Ronggang Wang#
+            <strong>Huachen Gao<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i></strong>, Shihe Shen<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i>, Wangze Xu, Rui Peng, Luyang Tang, Kaiqiang Xiong, Jianbo Jiao, Ronggang Wang#
             <br>
             <em><a href="https://eccv2024.ecva.net/">European Conference on Computer Vision (ECCV)</a></em>, 2024
             <br>
@@ -438,7 +515,7 @@
         </tr>
 
         <!-- ICASSP23 -->
-        <tr class="paper-row">
+        <!-- <tr class="paper-row">
           <td class="compact-td" style="width:25%;vertical-align:middle">
             <div class="image-container">
               <img style="width:100%" src="images/icassp.jpg" alt="N2MVSNet">
@@ -455,7 +532,7 @@
             <br>
             <a href="data/icassp23.pdf">[paper]</a>
           </td>
-        </tr>
+        </tr> -->
 
         <!-- Applied Sciences -->
         <tr class="paper-row no-bottom-margin">
@@ -469,7 +546,7 @@
               <papertitle style="color:rgb(7, 125, 165);">PDANet: Self-Supervised Monocular Depth Estimation Using Perceptual and Data Augmentation Consistency</papertitle>
             </a>
             <br>
-            <strong>Huachen Gao&clubs;</strong>, Xiaoyu Liu&clubs;, Meixia Qu#, Shijie Huang
+            <strong>Huachen Gao<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i></strong>, Xiaoyu Liu<i class="fa-solid fa-clover" style="font-size:0.85em; color: #333;" title="Equal contribution"></i>, Meixia Qu#, Shijie Huang
             <br>
             <em><a href="https://www.mdpi.com/journal/applsci">Applied Sciences</a></em>, 2021, SCI, JCR-Q2
             <br>
@@ -481,14 +558,13 @@
 
     <!-- 教育经历部分 -->
     <div class="main-section">
-    <table class="section-spacing compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
-      <tr>
-        <td class="compact-td">
-          <heading>Education</heading>
-        </td>
-      </tr>
-    </tbody></table>
-
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr>
+          <td class="compact-td">
+            <heading>Education</heading>
+          </td>
+        </tr>
+      </tbody></table>
 
       <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
         <tr class="experience-item">
@@ -532,16 +608,16 @@
     </div>
 
     <!-- 工作经历部分 -->
-    <div class="main-section">
-    <table class="section-spacing compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
-      <tr>
-        <td class="compact-td">
-          <heading>Experiences</heading>
-        </td>
-      </tr>
-    </tbody></table>
+     <div class="main-section">
 
-
+      <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
+        <tr>
+          <td class="compact-td">
+            <heading>Experiences</heading>
+          </td>
+        </tr>
+      </tbody></table>
+    
       <table class="compact-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;"><tbody>
         <tr class="experience-item">
           <td class="compact-td" style="width:25%;vertical-align:middle;text-align:center;">
@@ -594,10 +670,12 @@
           <td class="compact-td" style="width:100%;vertical-align:middle">
             <heading>Awards</heading>
             <p style="margin-bottom:4px;line-height:1.6">
-              <strong>2022.06</strong>: Honors Bachelor of Engineering in Shandong University (Top 5% in Shandong University)<br>
-              <strong>2022.04</strong>: Outstanding Graduate of Shandong Province (Top 0.1% in Shandong Province)<br>
-              <strong>2021.04</strong>: Honorable Mention Award of MCM/ICM (Top 20% Worldwide)<br>
-              <strong>2020.11</strong>: <span style="color:rgb(226,131,82);"><strong>National First Prize</strong></span> in Undergraduate Mathematical Contest in Modelling (Top 0.6% in China)<br>
+              <strong>2022.06</strong>: Honors Bachelor of Engineering in Shandong University<br>
+              <strong>2022.04</strong>: Outstanding Graduate of Shandong Province<br>
+              <strong>2021.04</strong>: Honorable Mention Award of MCM/ICM<br>
+              <strong>2020.11</strong>: <strong><span class="highlight-tooltip"> National First Prize
+                <span class="tooltip-text">Top 0.6% in China</span>
+              </span></strong> in Undergraduate Mathematical Contest in Modelling<br>
               <strong>2020.02</strong>: National Second prize of 2020 China Engineering Robotics Competition
             </p>
           </td>
